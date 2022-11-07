@@ -1,5 +1,5 @@
 """
-Feito por Victor Hugo Rocha e Matheus Gadelha Herzog
+Feito por Victor Hugo Rocha e Matheus Herzog
 """
 
 import pygame
