@@ -1,3 +1,7 @@
+"""
+Feito por Victor Hugo Rocha e Matheus Gadelha Herzog
+"""
+
 import pygame
 
 from jogo.gerenciador import Gerenciador
