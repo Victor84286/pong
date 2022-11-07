@@ -1,5 +1,3 @@
-"""
-"""
 import pygame
 
 from jogo.cores import CORES
@@ -9,7 +7,8 @@ class Tela:
         self.tela = pygame.display.set_mode((600, 400))
         pygame.display.set_caption("Pong!")
 
-    def renderiza(self, paletas, bola):
+    # incluido o placar como parâmetro
+    def renderiza(self, paletas, bola, placar):
         self.tela.fill(CORES.preto)
 
         pygame.draw.line(
@@ -20,9 +19,10 @@ class Tela:
             3
         )
 
-        bola.desenha(self.tela)
-
         for paleta in paletas:
-            paleta.desenha(self.tela)
+            paleta.desenha(self.tela, paleta.tamanho_inicial)
+
+        bola.desenha(self.tela)
+        placar.desenha(self.tela)  # chama o método desenha
 
         pygame.display.update()

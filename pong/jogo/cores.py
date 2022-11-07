@@ -1,5 +1,5 @@
 """
-Organiza as cores do prjeto
+Organiza as cores do projeto.
 """
 from dataclasses import dataclass
 

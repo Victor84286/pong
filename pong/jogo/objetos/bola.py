@@ -1,10 +1,11 @@
 import math
 import random
 import pygame
+
 from jogo.cores import CORES
 
 class Bola:
-    velocidade = 10
+    velocidade = 5
 
     def __init__(self):
         self.posicao = [300, 200]
@@ -15,16 +16,9 @@ class Bola:
             dir_x = random.uniform(-1, 1)
             if int(self.velocidade * dir_x) and dir_x not in [-1, 1]:
                 break
-        dir_y = random.choice([-1, 1]) * math.sqrt(1 - (dir_x ** 2))
-        return [dir_x, dir_y]
 
-    def desenha(self, tela):
-        pygame.draw.circle(
-            tela,
-            CORES.vermelho,
-            self.posicao,
-            5
-        )
+        dir_y = random.choice([-1, 1]) * math.sqrt(1 - dir_x ** 2)
+        return [dir_x, dir_y]
 
     def movimenta(self):
         self.posicao = [
@@ -47,3 +41,11 @@ class Bola:
         if self.posicao[0] > 565:
             self.direcao[0] *= -1
             self.posicao[0] = 565
+
+    def desenha(self, tela):
+        pygame.draw.circle(
+            tela,
+            CORES.branco,
+            self.posicao,
+            5
+        )
