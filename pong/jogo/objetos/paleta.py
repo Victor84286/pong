@@ -18,7 +18,7 @@ class Paleta:
 
     def movimenta(self, teclas):
         if teclas[self.subir] and self.posicao[1] != 0:
-            self.posicao[1] -= 1
+            self.posicao[1] -= 5
 
         if teclas[self.descer] and self.posicao[1] != 250:
-            self.posicao[1] += 1
+            self.posicao[1] += 5

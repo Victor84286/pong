@@ -26,10 +26,10 @@ class Gerenciador:
                 break
 
             self.trata_teclas_pressionadas()
-
+            self.bola.movimenta()
             self.tela.renderiza(self.paletas, self.bola)
 
-            pygame.time.Clock().tick(100)
+            pygame.time.Clock().tick(60)
 
     def trata_teclas_pressionadas(self):
         teclas = pygame.key.get_pressed()
