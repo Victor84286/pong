@@ -10,8 +10,8 @@ from .objetos.paleta import Paleta
 
 class Gerenciador:
     def __init__(self) -> None:
-        self.tela = Tela()     # tela voltou para o construtor
-        self.placar = Placar() # inicializa o placar zerado
+        self.tela = Tela()
+        self.placar = Placar()
         self.inicia_partida()
 
     def inicia_partida(self):
@@ -30,29 +30,23 @@ class Gerenciador:
             self.trata_teclas_pressionadas()
             self.bola.movimenta()
 
-            # se o método atualiza() retorna True, é porque houve uma
-            # pontuação, e o jogo precisa ser reposicionado
+
             if self.placar.atualiza(self.paletas, self.bola):
-                time.sleep(0.5)     # aguarda 0.5 segundos
+                time.sleep(0.5)
 
-                if self.placar.verifica_vencedor():
-                    self.tela.renderiza(self.paletas, self.bola, self.placar)
-                    time.sleep(2.0)
-                    break
+                if self.placar.verifica_vencedor():    # verifica se houve vencedor
+                    self.tela.renderiza(self.paletas, self.bola, self.placar)   # printa que houve vencedor
+                    time.sleep(2.0)         # mantém a tela parada por 2 segundos
+                    break           #finaliza o jogo
 
-                self.inicia_partida()   # reposiciona paletas e bola
-
-
+                self.inicia_partida()
 
 
-            if self.bola.posicao[0] <= 35 or self.bola.posicao[0] >= 565:
-                self.bola.velocidade += 1
-                for paleta in self.paletas:
-                    if paleta.posicao[1] <= self.bola.posicao[1] <= (paleta.posicao[1] + paleta.tamanho_inicial[1]) :
-                        for paleta in self.paletas:
-                            paleta.tamanho_inicial[1] -= 10
+            if self.bola.posicao[0] <= 35 or self.bola.posicao[0] >= 565:       # verifica batida nas paredes das barras
+                self.bola.velocidade += 1                   # aumenta a velocidade da bola
+                for paleta in self.paletas:                 # diminui o tamanho das barras
+                    paleta.tamanho_inicial[1] -= 10
 
-            # atualizada a chamada do método para incluir o placar
             self.tela.renderiza(self.paletas, self.bola, self.placar)
 
             pygame.time.Clock().tick(60)

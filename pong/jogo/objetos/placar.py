@@ -47,21 +47,19 @@ class Placar:
         return False
 
     def desenha(self, tela):
-        # define a fonte. None significa que vamos usar a fonte padrão
         fonte = pygame.font.SysFont(None, 30)
 
-        # renderizamos o placar. Veja que usamos a função str() para converter
-        # o valor numético para string
         p1_fonte = fonte.render(str(self.p1), True, CORES.vermelho)
         p2_fonte = fonte.render(str(self.p2), True, CORES.vermelho)
 
-        # blit é usado para determinar a posição em que o texto vai ser
-        # desenhado
         tela.blit(p1_fonte, (5, 20))
         tela.blit(p2_fonte, (585, 20))
 
+        # fonte texto vencedor
         fonte_vencedor = pygame.font.SysFont(None, 70)
 
+        # tela final do jogo
+        # com o vencedor e fundo preto
         if self.verifica_vencedor() != False:
             vencedor_fonte = fonte_vencedor.render(str(self.verifica_vencedor()), True, CORES.vermelho)
             tela.fill(CORES.preto)

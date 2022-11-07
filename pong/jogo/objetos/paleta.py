@@ -7,7 +7,7 @@ class Paleta:
         self.posicao = posicao
         self.subir = acao_subir
         self.descer = acao_descer
-        self.tamanho_inicial = tamanho_inicial
+        self.tamanho_inicial = tamanho_inicial # define o tamanho inicial da barra
 
     def desenha(self, tela, tamanho):
         pygame.draw.rect(
@@ -21,5 +21,5 @@ class Paleta:
         if teclas[self.subir] and self.posicao[1] > 0:
             self.posicao[1] -= 5
 
-        if teclas[self.descer] and self.posicao[1] < 400 - self.tamanho_inicial[1]:
+        if teclas[self.descer] and self.posicao[1] < 400 - self.tamanho_inicial[1]:  # modificação para ajustar imite para tamanho atual da barra
             self.posicao[1] += 5
